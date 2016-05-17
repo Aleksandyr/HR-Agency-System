@@ -30,6 +30,16 @@ namespace HRAgencySystem.Data.Migrations
             {
                 this.SeedUsers(context);
             }
+
+            if (!context.Offices.Any())
+            {
+                this.SeedOffices(context);
+            }
+
+            if (!context.HallStatuses.Any())
+            {
+                this.SeedHallStatuses(context);
+            }
         }
 
         private void SeedRole(HRAgancyDbContext context)
@@ -58,7 +68,7 @@ namespace HRAgencySystem.Data.Migrations
             var user1 = new User
             {
                 UserName = "newUser",
-                Email = "new_user@gmail.com",
+                Email = "newUser@gmail.com",
                 PasswordHash = PasswordHash.HashPassword("password123")
             };
 
@@ -69,13 +79,48 @@ namespace HRAgencySystem.Data.Migrations
                 var user2 = new User
                 {
                     UserName = "admin",
-                    Email = "admin@snippy.softuni.com",
+                    Email = "admin@gmail.com",
                     PasswordHash = PasswordHash.HashPassword("admin123")
                 };
 
                 UserManager.Create(user2);
                 UserManager.AddToRole(user2.Id, "Admin");
             }
+        }
+
+        private void SeedOffices(HRAgancyDbContext context)
+        {
+            var office = new Office
+            {
+                Name = "HR Office",
+                Description = "This is the newest office"
+            };
+
+            context.Offices.Add(office);
+            context.SaveChanges();
+        }
+
+        private void SeedHallStatuses(HRAgancyDbContext context)
+        {
+            var activeStatus = new HallStatus
+            {
+                Name = "Active"
+            };
+
+            var inactiveStatus = new HallStatus
+            {
+                Name = "InActive"
+            };
+
+            context.HallStatuses.Add(activeStatus);
+            context.HallStatuses.Add(inactiveStatus);
+
+            context.SaveChanges();
+        }
+
+        private void SeedHalls(HRAgancyDbContext context)
+        {
+            
         }
     }
 }
