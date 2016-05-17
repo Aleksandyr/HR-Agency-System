@@ -17,12 +17,6 @@
             this.reservations = new HashSet<Reservation>();
         }
 
-
-        [Required]
-        public int UserRoleId { get; set; }
-
-        public virtual UserRole UserRole { get; set; }
-
         public virtual ICollection<Reservation> Reservations
         {
             get

@@ -26,8 +26,6 @@ namespace HRAgencySystem.Data
 
         public virtual IDbSet<Reservation> Reservations { get; set; }
 
-        public virtual IDbSet<UserRole> UserRoles { get; set; }
-
 
         public static HRAgancyDbContext Create()
         {
