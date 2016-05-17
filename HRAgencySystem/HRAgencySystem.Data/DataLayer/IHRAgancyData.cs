@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HRAgencySystem.Data.Repositories;
+using HRAgencySystem.Models;
 
 namespace HRAgencySystem.Data.DataLayer
 {
-    interface IHRAgancyData
+    public interface IHRAgancyData
     {
+        IRepository<User> Users { get; }
+
+        IRepository<Hall> Halls { get; }
+
+        IRepository<Item> Items { get; }
+
+        IRepository<HallStatus> HallStatuses { get; }
+
+        IRepository<Reservation> Reservations { get; }
+
+        int SaveChanges();
     }
 }
