@@ -16,6 +16,7 @@ namespace HRAgencySystem.Web.Controllers
 
         public ActionResult Index()
         {
+            Console.WriteLine();
             return View();
         }
 
