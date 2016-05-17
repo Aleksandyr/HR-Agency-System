@@ -5,14 +5,36 @@
     using System.Threading.Tasks;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using System.Collections.Generic;
 
 
-    public class User
+    public class User : IdentityUser
     {
+        private ICollection<Reservation> reservations;
+
+        public User()
+        {
+            this.reservations = new HashSet<Reservation>();
+        }
+
+
         [Required]
         public int UserRoleId { get; set; }
 
-        public virtual UserRole Role { get; set; }
+        public virtual UserRole UserRole { get; set; }
+
+        public virtual ICollection<Reservation> Reservations
+        {
+            get
+            {
+                return this.reservations;
+            }
+            set
+            {
+                this.reservations = value;
+            }
+
+        }
 
         public class ApplicationUser : IdentityUser
         {
