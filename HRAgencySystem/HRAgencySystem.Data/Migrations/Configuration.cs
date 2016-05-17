@@ -1,4 +1,6 @@
 
+using System.Collections.Generic;
+
 namespace HRAgencySystem.Data.Migrations
 {
     using System.Linq;
@@ -39,6 +41,16 @@ namespace HRAgencySystem.Data.Migrations
             if (!context.HallStatuses.Any())
             {
                 this.SeedHallStatuses(context);
+            }
+
+            if (!context.Items.Any())
+            {
+                this.SeedItems(context);
+            }
+
+            if (!context.Halls.Any())
+            {
+                this.SeedHalls(context);
             }
         }
 
@@ -118,9 +130,150 @@ namespace HRAgencySystem.Data.Migrations
             context.SaveChanges();
         }
 
+        private void SeedItems(HRAgancyDbContext context)
+        {
+            var listOfItems = new List<string>()
+            {
+                "TV",
+                "Projector"
+            };
+
+            foreach (var currItem in listOfItems)
+            {
+                var item = new Item
+                {
+                    Name = currItem
+                };
+
+                context.Items.Add(item);
+            }
+
+            context.SaveChanges();
+        }
+
         private void SeedHalls(HRAgancyDbContext context)
         {
-            
+            var firstHall = new Hall
+            {
+                Name = "Hall 1",
+                Description = "Hall with 30 places with TV",
+                Capacity = 30,
+                Office = context.Offices.FirstOrDefault(o => o.Name == "HR Office"),
+                HallStatus = context.HallStatuses.FirstOrDefault(s => s.Name == "Active"),
+                Items = context.Items.Where(i => i.Name == "TV").ToList()
+            };
+
+            context.Halls.Add(firstHall);
+
+            var secondHall = new Hall
+            {
+                Name = "Hall 2",
+                Description = "Hall with 30 places with Projector",
+                Capacity = 30,
+                Office = context.Offices.FirstOrDefault(o => o.Name == "HR Office"),
+                HallStatus = context.HallStatuses.FirstOrDefault(s => s.Name == "Active"),
+                Items = context.Items.Where(i => i.Name == "Projector").ToList()
+            };
+
+            context.Halls.Add(secondHall);
+
+            var thirdHall = new Hall
+            {
+                Name = "Hall 3",
+                Description = "Hall with 15 places with TV",
+                Capacity = 15,
+                Office = context.Offices.FirstOrDefault(o => o.Name == "HR Office"),
+                HallStatus = context.HallStatuses.FirstOrDefault(s => s.Name == "Active"),
+                Items = context.Items.Where(i => i.Name == "TV").ToList()
+            };
+
+            context.Halls.Add(thirdHall);
+
+            var fourthHall = new Hall
+            {
+                Name = "Hall 4",
+                Description = "Hall with 15 places with Projector",
+                Capacity = 15,
+                Office = context.Offices.FirstOrDefault(o => o.Name == "HR Office"),
+                HallStatus = context.HallStatuses.FirstOrDefault(s => s.Name == "Active"),
+                Items = context.Items.Where(i => i.Name == "Projector").ToList()
+            };
+
+            context.Halls.Add(fourthHall);
+
+            var fifthHall = new Hall
+            {
+                Name = "Hall 5",
+                Description = "Hall with 15 places with Projector",
+                Capacity = 15,
+                Office = context.Offices.FirstOrDefault(o => o.Name == "HR Office"),
+                HallStatus = context.HallStatuses.FirstOrDefault(s => s.Name == "Active"),
+                Items = context.Items.Where(i => i.Name == "Projector").ToList()
+            };
+
+            context.Halls.Add(fifthHall);
+
+            var sixthHall = new Hall
+            {
+                Name = "Hall 6",
+                Description = "Hall with 10 places with Projector",
+                Capacity = 10,
+                Office = context.Offices.FirstOrDefault(o => o.Name == "HR Office"),
+                HallStatus = context.HallStatuses.FirstOrDefault(s => s.Name == "Active"),
+                Items = context.Items.Where(i => i.Name == "Projector").ToList()
+            };
+
+            context.Halls.Add(sixthHall);
+
+            var seventhHall = new Hall
+            {
+                Name = "Hall 7",
+                Description = "Hall with 10 places with Projector",
+                Capacity = 10,
+                Office = context.Offices.FirstOrDefault(o => o.Name == "HR Office"),
+                HallStatus = context.HallStatuses.FirstOrDefault(s => s.Name == "Active"),
+                Items = context.Items.Where(i => i.Name == "Projector").ToList()
+            };
+
+            context.Halls.Add(seventhHall);
+
+            var eighthHall = new Hall
+            {
+                Name = "Hall 8",
+                Description = "Hall with 10 places with Projector",
+                Capacity = 10,
+                Office = context.Offices.FirstOrDefault(o => o.Name == "HR Office"),
+                HallStatus = context.HallStatuses.FirstOrDefault(s => s.Name == "Active"),
+                Items = context.Items.Where(i => i.Name == "Projector").ToList()
+            };
+
+            context.Halls.Add(eighthHall);
+
+            var ninethHall = new Hall
+            {
+                Name = "Hall 9",
+                Description = "Hall with 10 places with TV",
+                Capacity = 10,
+                Office = context.Offices.FirstOrDefault(o => o.Name == "HR Office"),
+                HallStatus = context.HallStatuses.FirstOrDefault(s => s.Name == "Active"),
+                Items = context.Items.Where(i => i.Name == "TV").ToList()
+            };
+
+            context.Halls.Add(ninethHall);
+
+            var tenthHall = new Hall
+            {
+                Name = "Hall 10",
+                Description = "Hall with 10 places with TV",
+                Capacity = 10,
+                Office = context.Offices.FirstOrDefault(o => o.Name == "HR Office"),
+                HallStatus = context.HallStatuses.FirstOrDefault(s => s.Name == "Active"),
+                Items = context.Items.Where(i => i.Name == "TV").ToList()
+            };
+
+            context.Halls.Add(tenthHall);
+
+            context.SaveChanges();
         }
     }
 }
