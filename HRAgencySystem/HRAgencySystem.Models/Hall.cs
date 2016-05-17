@@ -35,19 +35,7 @@
         [Required]
         public int HallStatusId { get; set; }
 
-        public virtual HallStatus Status { get; set; }
-
-        public virtual ICollection<Reservation> Reservations
-        {
-            get
-            {
-                return this.reservations;
-            }
-            set
-            {
-                this.reservations = value;
-            }
-        }
+        public virtual HallStatus HallStatus { get; set; }
 
         public virtual ICollection<Item> Items
         {
@@ -58,6 +46,18 @@
             set
             {
                 this.items = value;
+            }
+        }
+
+        public virtual ICollection<Reservation> Reservations
+        {
+            get
+            {
+                return this.reservations;
+            }
+            set
+            {
+                this.reservations = value;
             }
         }
     }
