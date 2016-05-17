@@ -1,16 +1,18 @@
-﻿using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-
-namespace HRAgencySystem.Models
+﻿namespace HRAgencySystem.Models
 {
+    using System.ComponentModel.DataAnnotations;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+
+
     public class User
     {
         [Required]
-        public int RoleId { get; set; }
+        public int UserRoleId { get; set; }
 
-        public virtual Role Role { get; set; }
+        public virtual UserRole Role { get; set; }
 
         public class ApplicationUser : IdentityUser
         {
