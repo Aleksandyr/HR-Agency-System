@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace HRAgencySystem.Models
+﻿namespace HRAgencySystem.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+
     public class Reservation
     {
         private ICollection<User> users;
@@ -44,7 +45,6 @@ namespace HRAgencySystem.Models
             {
                 this.users = value;
             }
-
         }
     }
 }

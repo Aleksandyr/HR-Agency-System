@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Reflection;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
-using HRAgencySystem.Common.Mappings;
-
-namespace HRAgencySystem.Web
+﻿namespace HRAgencySystem.Web
 {
+    using System.Collections.Generic;
+    using System.Reflection;
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Web.Optimization;
+    using System.Web.Routing;
+    using HRAgencySystem.Common.Mappings;
+
+
     public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
