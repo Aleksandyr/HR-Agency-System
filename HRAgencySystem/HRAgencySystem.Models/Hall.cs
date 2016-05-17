@@ -33,9 +33,9 @@
         public virtual Office Office { get; set; }
 
         [Required]
-        public int StatusId { get; set; }
+        public int HallStatusId { get; set; }
 
-        public virtual Status Status { get; set; }
+        public virtual HallStatus Status { get; set; }
 
         public virtual ICollection<Reservation> Reservations
         {
