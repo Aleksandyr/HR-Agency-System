@@ -8,7 +8,7 @@ namespace HRAgencySystem.Data
     
     using Models;
 
-    public class HRAgancyDbContext : IdentityDbContext<User>
+    public class HRAgancyDbContext : IdentityDbContext<User>, IHRAgancyDbContext
     {
         public HRAgancyDbContext()
             : base("HRAgancy", throwIfV1Schema: false)
