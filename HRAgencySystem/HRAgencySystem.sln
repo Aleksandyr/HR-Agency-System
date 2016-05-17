@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRAgencySystem.Web", "HRAgencySystem.Web\HRAgencySystem.Web.csproj", "{692B0FE4-7F99-43C3-8FFD-B7054BA7E23D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRAgencySystem.Common", "HRAgencySystem.Common\HRAgencySystem.Common.csproj", "{4AEBF733-244D-4434-9214-A5604C74446A}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{692B0FE4-7F99-43C3-8FFD-B7054BA7E23D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{692B0FE4-7F99-43C3-8FFD-B7054BA7E23D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{692B0FE4-7F99-43C3-8FFD-B7054BA7E23D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{692B0FE4-7F99-43C3-8FFD-B7054BA7E23D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AEBF733-244D-4434-9214-A5604C74446A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AEBF733-244D-4434-9214-A5604C74446A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AEBF733-244D-4434-9214-A5604C74446A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AEBF733-244D-4434-9214-A5604C74446A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
