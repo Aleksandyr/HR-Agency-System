@@ -214,7 +214,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -286,6 +285,10 @@
     <ProjectReference Include="..\HRAgencySystem.Common\HRAgencySystem.Common.csproj">
       <Project>{4aebf733-244d-4434-9214-a5604c74446a}</Project>
       <Name>HRAgencySystem.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HRAgencySystem.Data\HRAgencySystem.Data.csproj">
+      <Project>{4a80ebfd-67c2-48a3-bef6-cb0e1ea4cd4a}</Project>
+      <Name>HRAgencySystem.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\HRAgencySystem.Models\HRAgencySystem.Models.csproj">
       <Project>{efc239e2-747c-4b9c-8f92-b4ba1da30ef3}</Project>
