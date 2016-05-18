@@ -29,6 +29,9 @@
         [Required]
         public int HallId { get; set; }
 
+        [Required]
+        public int CapacityForReservation { get; set; }
+
         public virtual Hall Hall{ get; set; }
 
         public virtual ICollection<User> Users

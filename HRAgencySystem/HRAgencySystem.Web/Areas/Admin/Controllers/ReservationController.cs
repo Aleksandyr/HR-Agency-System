@@ -55,17 +55,29 @@ namespace HRAgencySystem.Web.Areas.Admin.Controllers
                         users.Add(this.Data.Users.All().FirstOrDefault(u => u.Id == userId));
                     }
 
-                    var reservation = new Reservation
-                    {
-                        Description = model.Description,
-                        HallId = this.Data.Halls.All().Where(h => h.Id == model.HallId).Select(h => h.Id).FirstOrDefault(),
-                        Users = users,
-                        StartDate = model.StartDate,
-                        EndDate = model.EndDate
-                    };
+                    var currentHall = this.Data.Halls.All().FirstOrDefault(h => h.Id == model.HallId);
 
-                    this.Data.Reservations.Add(reservation);
-                    this.Data.SaveChanges();
+                    //Check is have enough capacity for users;
+                    bool isHaveCapacity = currentHall.Capacity >= users.Count();
+                    if (isHaveCapacity)
+                    {
+                        var reservation = new Reservation
+                        {
+                            Description = model.Description,
+                            HallId =
+                                this.Data.Halls.All()
+                                    .Where(h => h.Id == model.HallId)
+                                    .Select(h => h.Id)
+                                    .FirstOrDefault(),
+                            Users = users,
+                            StartDate = model.StartDate,
+                            EndDate = model.EndDate,
+                            CapacityForReservation = currentHall.Capacity - users.Count()
+                        };
+
+                        this.Data.Reservations.Add(reservation);
+                        this.Data.SaveChanges();
+                    }
                 }
 
                 return this.RedirectToAction("Index", "Home");
