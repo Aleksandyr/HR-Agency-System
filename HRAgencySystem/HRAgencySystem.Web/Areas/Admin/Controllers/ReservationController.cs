@@ -33,7 +33,7 @@ namespace HRAgencySystem.Web.Areas.Admin.Controllers
         {
             if (model != null && this.ModelState.IsValid)
             {
-                if(model.StartDate < model.EndDate)
+                if(model.StartDate.AddHours(1) <= model.EndDate)
                 { 
                     List<User> users = new List<User>();
                     foreach (var userId in model.UserIds)
