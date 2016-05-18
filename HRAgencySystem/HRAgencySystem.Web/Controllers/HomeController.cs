@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using HRAgencySystem.Data.DataLayer;
+﻿
+using AutoMapper.QueryableExtensions;
+using HRAgencySystem.Web.ViewModels.Hall;
+using PagedList;
 
 namespace HRAgencySystem.Web.Controllers
 {
+    using System.Linq;
+    using System.Web.Mvc;
+    using System.Collections.Generic;
+
+    using AutoMapper;
+
+    using HRAgencySystem.Web.ViewModels;
+    using HRAgencySystem.Common;
+    using HRAgencySystem.Data.DataLayer;
+
     public class HomeController : BaseController
     {
         public HomeController(IHRAgancyData data)
@@ -14,10 +22,15 @@ namespace HRAgencySystem.Web.Controllers
         {
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            Console.WriteLine();
-            return View();
+            var halls = this.Data.Halls
+                .All()
+                .OrderByDescending(h => h.Name)
+                .ProjectTo<HallViewModel>()
+                .ToPagedList(page ?? GlobalConstants.DefaultHallStartPage, GlobalConstants.DefaulHalltPageSize);
+
+            return View(halls);
         }
 
         public ActionResult About()
