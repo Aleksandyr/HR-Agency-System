@@ -5,6 +5,6 @@
     <p>Description: @Model.Description</p>
     <p>Capacity: @Model.Capacity</p>
     <p>
-        <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Details &raquo;</a>
+        @Html.ActionLink("Details", "Details", "Hall", new { id = @Model.Id }, new { @class = "btn btn-primary" })
     </p>
 </div>

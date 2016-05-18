@@ -1,0 +1,25 @@
+﻿ @model HRAgencySystem.Web.ViewModels.Hall.HallDetailsViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.Name</h2>
+
+<div>
+    <p>@Html.DisplayNameFor(x => x.Description) : @Html.DisplayFor(x => x.Description)</p>
+    <p>@Html.DisplayNameFor(x => x.Capacity) : @Html.DisplayFor(x => x.Capacity)</p>
+    <p>@Html.DisplayNameFor(x => x.OfficeName) : @Html.DisplayFor(x => x.OfficeName)</p>
+    <p>@Html.DisplayNameFor(x => x.HallStatusName) : @Html.DisplayFor(x => x.HallStatusName)</p>
+</div>
+<div id="Items">
+    <h2>Items</h2>
+    @if (@Model.Items.Any())
+    {
+        @Html.DisplayFor(x => x.Items)
+    }
+    else
+    {
+        <span>No Items</span>
+    }
+</div>
+
