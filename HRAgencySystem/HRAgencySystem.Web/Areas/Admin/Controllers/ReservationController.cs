@@ -33,7 +33,21 @@ namespace HRAgencySystem.Web.Areas.Admin.Controllers
         {
             if (model != null && this.ModelState.IsValid)
             {
-                if(model.StartDate.AddHours(1) <= model.EndDate)
+                
+                var getHallReservations = this.Data.Reservations.All()
+                    .Where(r => r.HallId == model.HallId);
+                bool isHaveReservation = false;
+                foreach (var hallReservation in getHallReservations)
+                {
+                    //Check is given reservation match with other reservation
+                    if ((model.StartDate <= hallReservation.EndDate && model.StartDate >= hallReservation.StartDate) ||
+                        (model.EndDate >= hallReservation.StartDate && model.EndDate <= hallReservation.EndDate))
+                    {
+                        isHaveReservation = true;
+                    }
+                }
+                //You can reserve hall at least for an hour and check is have reservation
+                if ((model.StartDate.AddHours(1) <= model.EndDate) && (!isHaveReservation))
                 { 
                     List<User> users = new List<User>();
                     foreach (var userId in model.UserIds)
