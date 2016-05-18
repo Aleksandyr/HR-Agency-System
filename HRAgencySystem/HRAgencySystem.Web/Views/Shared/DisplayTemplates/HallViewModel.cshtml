@@ -5,6 +5,13 @@
     <p>Description: @Model.Description</p>
     <p>Capacity: @Model.Capacity</p>
     <p>
-        @Html.ActionLink("Details", "Details", "Hall", new { id = @Model.Id }, new { @class = "btn btn-primary" })
+        @if (this.User.Identity.IsAuthenticated)
+        {
+            @Html.ActionLink("Details", "Details", "Hall", new {id = @Model.Id}, new {@class = "btn btn-primary"})    
+        }
+        @if (HttpContext.Current.User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Reservation", "CreateReservation", "Reservation", null, new { @class = "btn btn-primary" })
+        }
     </p>
 </div>

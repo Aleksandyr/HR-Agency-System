@@ -23,3 +23,8 @@
     }
 </div>
 
+@if (HttpContext.Current.User.IsInRole("Admin"))
+{
+   @Html.ActionLink("Reservation", "CreateReservation", "Reservation", null, new { @class = "btn btn-primary" })
+}
+
