@@ -9,9 +9,5 @@
         {
             @Html.ActionLink("Details", "Details", "Hall", new {id = @Model.Id}, new {@class = "btn btn-primary"})    
         }
-        @if (HttpContext.Current.User.IsInRole("Admin"))
-        {
-            @Html.ActionLink("Reservation", "CreateReservation", "Reservation", null, new { @class = "btn btn-primary" })
-        }
     </p>
 </div>

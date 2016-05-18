@@ -25,6 +25,6 @@ namespace HRAgencySystem.Web.Areas.InputModels.Registration
 
         public DateTime StartDate { get; set; }
 
-        public int EndDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

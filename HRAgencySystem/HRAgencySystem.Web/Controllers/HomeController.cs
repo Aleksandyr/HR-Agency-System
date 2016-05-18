@@ -22,6 +22,7 @@ namespace HRAgencySystem.Web.Controllers
         {
         }
 
+        [AllowAnonymous]
         public ActionResult Index(int? page)
         {
             var halls = this.Data.Halls
@@ -33,6 +34,7 @@ namespace HRAgencySystem.Web.Controllers
             return View(halls);
         }
 
+        [AllowAnonymous]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -40,6 +42,7 @@ namespace HRAgencySystem.Web.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

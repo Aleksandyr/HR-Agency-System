@@ -17,6 +17,7 @@ namespace HRAgencySystem.Web.Controllers
         {
         }
 
+        [Authorize]
         public ActionResult Details(int id)
         {
             var hall = this.Data.Halls
