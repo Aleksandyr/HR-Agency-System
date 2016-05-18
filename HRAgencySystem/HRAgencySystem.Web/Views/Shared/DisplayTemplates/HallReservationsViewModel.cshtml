@@ -9,5 +9,13 @@
     <td>@Model.CapacityForReservation</td>
     <td>@Model.StartDate</td>
     <td>@Model.EndDate</td>
+    @if (@Model.isUserInReservation)
+    {
+        <td><button class="btn btn-danger">Delete me</button></td>
+    }
+    else
+    {
+        <td><button class="btn btn-success">Add me</button></td>
+    }
 </tr>
 
