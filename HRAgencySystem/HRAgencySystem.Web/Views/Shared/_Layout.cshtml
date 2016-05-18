@@ -7,6 +7,14 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <link href="~/Content/Kendo/kendo.black.min.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/kendo.common.core.min.css" rel="stylesheet" />
+    <link href="~/Content/Kendo/kendo.common.min.css" rel="stylesheet" />
+
+    <script src="~/Scripts/Kendo/jquery.min.js"></script>
+    <script src="~/Scripts/Kendo/kendo.all.min.js"></script>
+    <script src="~/Scripts/Kendo/kendo.aspnetmvc.min.js"></script>
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -21,13 +29,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     @if (HttpContext.Current.User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Reserv hall", "CreateReservation", "Reservation")</li>
+                        <li>@Html.ActionLink("Reserv hall", "CreateReservation", "Reservation", new {Area = "Admin"}, null)</li>
                     }
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

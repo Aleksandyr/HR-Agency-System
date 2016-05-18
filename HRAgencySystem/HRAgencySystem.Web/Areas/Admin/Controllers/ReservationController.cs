@@ -12,6 +12,7 @@ namespace HRAgencySystem.Web.Areas.Admin.Controllers
     using HRAgencySystem.Web.Controllers;
 
     [Authorize(Roles = "Admin")]
+    [Route("Admin/Reservation")]
     public class ReservationController : BaseController
     {
         public ReservationController(IHRAgancyData data) 
@@ -80,7 +81,8 @@ namespace HRAgencySystem.Web.Areas.Admin.Controllers
                     }
                 }
 
-                return this.RedirectToAction("Index", "Home");
+                return this.RedirectToRoute("Home/Index");
+                //return this.RedirectToAction("Index", "Home");
             }
 
             //When we return model we will show the errors
