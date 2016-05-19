@@ -3,14 +3,37 @@
     ViewBag.Title = "UserReservationsViewModel";
 }
 
-<tr>
+<tr id="row @Model.Id">
     <td>@Model.HallName</td>
     <td>@Model.Description</td>
     <td>@Model.CapacityForReservation</td>
     <td>@Model.StartDate</td>
     <td>@Model.EndDate</td>
-    <td><button class="btn btn-danger">Delete me</button></td>
+    <td>
+        @using (Ajax.BeginForm("DeleteMeFromReservation", "User", new { id = Model.Id }, new AjaxOptions()
+        {
+            HttpMethod = "POST",
+            OnSuccess = string.Format(
+                "deleteSuccess({0})",
+                Json.Encode(Model.Id)
+                ),
+            LoadingElementId = "progressToadd",
+        }))
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="submit" name="name" class="btn btn-danger" value="Delete me" />
+        }
+    </td>
 </tr>
 
+@section scripts {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
 
-
+    <script>
+        var deleteSuccess = function (rowid) {
+            document.getElementById('#row ' + rowid).remove();
+            //$('#row' + rowid).remove();
+        };
+    </script>
+}
