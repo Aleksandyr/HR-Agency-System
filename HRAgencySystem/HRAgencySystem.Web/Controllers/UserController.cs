@@ -46,6 +46,12 @@ namespace HRAgencySystem.Web.Controllers
             {
                 currUser.Reservations.Remove(reservation);
                 this.Data.Users.Update(currUser);
+
+                // Update reservation capacity
+                int updatedCapacity = ++reservation.CapacityForReservation;
+                reservation.CapacityForReservation = updatedCapacity;
+                this.Data.Reservations.Update(reservation);
+
                 this.Data.SaveChanges();
 
                 return this.View("Reservations", this.LoadUserReservation(currUserId));
