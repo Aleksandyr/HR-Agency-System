@@ -45,7 +45,6 @@ namespace HRAgencySystem.Web.Controllers
                 .Where(r => r.HallId == id)
                 .OrderByDescending(r => r.StartDate)
                 .ToList();
-                //.ToPagedList(page ?? GlobalConstants.DefaultHallReservationStartPage, GlobalConstants.DefaulHallReservationtPageSize);
 
             List<HallReservationsViewModel> hallReservations= new List<HallReservationsViewModel>();
             foreach (var hallReservation in getHallReservations)

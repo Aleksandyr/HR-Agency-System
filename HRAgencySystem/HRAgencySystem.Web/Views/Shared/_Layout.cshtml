@@ -29,7 +29,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new {area = ""}, null)</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("My reservations", "Reservations", "User", new {area = ""}, null)</li>
+                    }
                     @if (HttpContext.Current.User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Reserv hall", "CreateReservation", "Reservation", new {Area = "Admin"}, null)</li>

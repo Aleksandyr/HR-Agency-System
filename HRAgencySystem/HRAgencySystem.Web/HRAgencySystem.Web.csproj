@@ -233,6 +233,7 @@
     <Compile Include="Controllers\HallController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -244,6 +245,7 @@
     <Compile Include="ViewModels\Hall\HallDetailsViewModel.cs" />
     <Compile Include="ViewModels\Hall\HallViewModel.cs" />
     <Compile Include="ViewModels\Item\ItemViewModel.cs" />
+    <Compile Include="ViewModels\User\UserReservationsViewModel.cs" />
     <Compile Include="ViewModels\User\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -323,6 +325,8 @@
     <Content Include="Views\Shared\DisplayTemplates\ItemViewModel.cshtml" />
     <Content Include="Views\Hall\ShowReservations.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\HallReservationsViewModel.cshtml" />
+    <Content Include="Views\User\Reservations.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\UserReservationsViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HRAgencySystem.Common\HRAgencySystem.Common.csproj">

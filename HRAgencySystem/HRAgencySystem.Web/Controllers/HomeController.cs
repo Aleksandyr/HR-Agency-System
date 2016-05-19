@@ -1,17 +1,12 @@
-﻿
-using AutoMapper.QueryableExtensions;
-using HRAgencySystem.Web.ViewModels.Hall;
-using PagedList;
-
-namespace HRAgencySystem.Web.Controllers
+﻿namespace HRAgencySystem.Web.Controllers
 {
     using System.Linq;
     using System.Web.Mvc;
-    using System.Collections.Generic;
 
-    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+    using PagedList;
 
-    using HRAgencySystem.Web.ViewModels;
+    using HRAgencySystem.Web.ViewModels.Hall;
     using HRAgencySystem.Common;
     using HRAgencySystem.Data.DataLayer;
 
