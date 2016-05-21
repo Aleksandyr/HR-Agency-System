@@ -43,7 +43,7 @@ namespace HRAgencySystem.Web.Controllers
             var getHallReservations = this.Data.Reservations
                 .All()
                 .Where(r => r.HallId == id)
-                .OrderByDescending(r => r.StartDate)
+                .OrderBy(r => r.StartDate)
                 .ToList();
 
             List<HallReservationsViewModel> hallReservations= new List<HallReservationsViewModel>();
