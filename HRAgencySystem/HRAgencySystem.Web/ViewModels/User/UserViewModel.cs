@@ -6,8 +6,8 @@ namespace HRAgencySystem.Web.ViewModels.User
 
     public class UserViewModel : IMapFrom<User>
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
-        public string Username { get; set; }
+        public string UserName { get; set; }
     }
 }

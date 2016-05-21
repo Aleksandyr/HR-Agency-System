@@ -93,15 +93,17 @@ namespace HRAgencySystem.Web.Controllers
                 .Include(r => r.Users)
                 .FirstOrDefault(r => r.Id == id);
 
-            var reservationDetailsViewModel = new ReservationDetailsViewModel()
-            {
-                Description = reservation.Description,
-                HallName = this.Data.Halls.All().Where(h => h.Id == reservation.HallId).Select(r => r.Name).FirstOrDefault(),
-                CapacityForReservation = reservation.CapacityForReservation,
-                StartDate = reservation.StartDate,
-                EndDate = reservation.EndDate,
-                Users = (IEnumerable<UserViewModel>) reservation.Users
-            };
+            //var reservationDetailsViewModel = new ReservationDetailsViewModel()
+            //{
+            //    Description = reservation.Description,
+            //    HallName = this.Data.Halls.All().Where(h => h.Id == reservation.HallId).Select(r => r.Name).FirstOrDefault(),
+            //    CapacityForReservation = reservation.CapacityForReservation,
+            //    StartDate = reservation.StartDate,
+            //    EndDate = reservation.EndDate,
+            //    Users = (IEnumerable<UserViewModel>) reservation.Users
+            //};
+
+            var reservationDetailsViewModel = Mapper.Map<ReservationDetailsViewModel>(reservation);
 
             return View(reservationDetailsViewModel);
         }
