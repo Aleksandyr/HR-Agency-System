@@ -23,7 +23,7 @@
             var halls = this.Data.Halls
                 .All()
                 .Where(h => h.HallStatus.Name == "Active")
-                .OrderByDescending(h => h.Name)
+                .OrderBy(h => h.Name)
                 .ProjectTo<HallViewModel>()
                 .ToPagedList(page ?? GlobalConstants.DefaultHallStartPage, GlobalConstants.DefaulHalltPageSize);
 

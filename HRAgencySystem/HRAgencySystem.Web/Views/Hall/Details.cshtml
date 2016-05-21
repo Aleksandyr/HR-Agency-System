@@ -32,7 +32,7 @@
 
     @if (HttpContext.Current.User.IsInRole("Admin"))
     {
-        @Html.ActionLink("Reservation", "CreateReservation", "Reservation", new {Area = "Admin"}, new {@class = "btn btn-primary"})
+        @Html.ActionLink("Reservation", "CreateReservation", "AdminReservation", new {Area = "Admin"}, new {@class = "btn btn-primary"})
     }
 </p>
 <div id="hall-reservations"></div>

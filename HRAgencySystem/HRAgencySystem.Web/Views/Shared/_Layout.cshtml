@@ -36,10 +36,11 @@
                     }
                     @if (HttpContext.Current.User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Reserv hall", "CreateReservation", "Reservation", new {Area = "Admin"}, null)</li>
+                        <li>@Html.ActionLink("Reserv hall", "CreateReservation", "AdminReservation", new {Area = "Admin"}, null)</li>
                     }
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("All reservations", "AllReservations", "Reservation", new {area = ""}, null)</li>
+                    <li>@Html.ActionLink("About", "About", "Home", new {area = ""}, null)</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new {area = ""}, null)</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

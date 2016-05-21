@@ -5,8 +5,8 @@
         public const int DefaultHallStartPage = 1;
         public const int DefaulHalltPageSize = 6;
 
-        public const int DefaultHallReservationStartPage = 1;
-        public const int DefaulHallReservationtPageSize = 5;
+        public const int DefaultReservationsStartPage = 1;
+        public const int DefaulReservationstPageSize = 6;
 
 
         public const string RequiredValidationMessage = "The {0} is required";

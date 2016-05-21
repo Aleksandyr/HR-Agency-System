@@ -1,13 +1,16 @@
-﻿@model HRAgencySystem.Web.ViewModels.Hall.HallViewModel
+﻿@model HRAgencySystem.Web.ViewModels.Reservation.ReservationViewModel
+@{
+    ViewBag.Title = "ReservationViewModel";
+}
 
 <div class="col-md-4 hall-row">
-    <h2>Name: @Model.Name</h2>
+    <h2>Hall name: @Model.HallName</h2>
     <p>Description: @Model.Description</p>
-    <p>Capacity: @Model.Capacity</p>
+    <p>Capacity: @Model.CapacityForReservation</p>
     <p>
         @if (this.User.Identity.IsAuthenticated)
         {
-            @Html.ActionLink("Details", "Details", "Hall", new {id = @Model.Id}, new {@class = "btn btn-primary"})
+            @Html.ActionLink("Details", "Details", "Hall", new { id = @Model.Id }, new { @class = "btn btn-primary" })
         }
 
         @if (this.User.IsInRole("Admin"))
@@ -17,3 +20,5 @@
         }
     </p>
 </div>
+
+

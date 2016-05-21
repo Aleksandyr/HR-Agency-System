@@ -10,4 +10,5 @@
         @Html.DisplayFor(x => x)
     </div>
 </div>
+
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

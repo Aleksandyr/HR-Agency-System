@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using HRAgencySystem.Common.Mappings;
-using HRAgencySystem.Models;
-
-namespace HRAgencySystem.Web.ViewModels.Hall
+﻿namespace HRAgencySystem.Web.ViewModels.Hall
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using HRAgencySystem.Common.Mappings;
+    using HRAgencySystem.Models;
+
     public class HallReservationsViewModel : IMapFrom<Reservation>
     {
         public int Id { get; set; }

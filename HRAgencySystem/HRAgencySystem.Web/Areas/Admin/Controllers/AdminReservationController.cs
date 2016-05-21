@@ -9,14 +9,14 @@ namespace HRAgencySystem.Web.Areas.Admin.Controllers
     using AutoMapper;
     using HRAgencySystem.Models;
     using HRAgencySystem.Data.DataLayer;
-    using HRAgencySystem.Web.Areas.InputModels.Registration;
+    using HRAgencySystem.Web.Areas.InputModels.Reservation;
     using HRAgencySystem.Web.Controllers;
 
     [Authorize(Roles = "Admin")]
     [Route("Admin/Reservation")]
-    public class ReservationController : BaseController
+    public class AdminReservationController : BaseController
     {
-        public ReservationController(IHRAgancyData data)
+        public AdminReservationController(IHRAgancyData data)
             : base(data)
         {
         }
@@ -97,7 +97,7 @@ namespace HRAgencySystem.Web.Areas.Admin.Controllers
                 }
             }
 
-            return this.RedirectToRoute("Home/Index", new { area = "" });
+            return this.RedirectToAction("Index", "Home", new { area = "" });
 
 
             //When we return model we will show the errors

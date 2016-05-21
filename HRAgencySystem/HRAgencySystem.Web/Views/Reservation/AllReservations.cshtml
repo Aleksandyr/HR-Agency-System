@@ -1,0 +1,14 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<HRAgencySystem.Web.ViewModels.Reservation.ReservationViewModel>
+@{
+    ViewBag.Title = "AllReservations";
+}
+
+<div id="hall-input" class="pull-left">
+    <h2>All Reservatins:</h2>
+    <div class="row">
+        @Html.DisplayFor(x => x)
+    </div>
+</div>
+
+@Html.PagedListPager(Model, page => Url.Action("AllReservations", new { page }))
