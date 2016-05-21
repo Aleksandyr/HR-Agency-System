@@ -34,19 +34,26 @@ namespace HRAgencySystem.Web.Areas.Admin.Controllers
         {
             if (model != null && this.ModelState.IsValid)
             {
-                
                 var getHallReservations = this.Data.Reservations.All()
                     .Where(r => r.HallId == model.HallId);
+
                 bool isHaveReservation = false;
                 foreach (var hallReservation in getHallReservations)
                 {
-                    //Check is given reservation match with other reservation
+                    // Check is have reservation that is between input date of reservation
+                    if ((model.StartDate <= hallReservation.StartDate && model.EndDate >= hallReservation.EndDate))
+                    {
+                        isHaveReservation = true;
+                    }
+
+                    // Check is input start date is detected with one of the dates and check if input end date is detected with one of the dates
                     if ((model.StartDate <= hallReservation.EndDate && model.StartDate >= hallReservation.StartDate) ||
                         (model.EndDate >= hallReservation.StartDate && model.EndDate <= hallReservation.EndDate))
                     {
                         isHaveReservation = true;
                     }
                 }
+
                 //You can reserve hall at least for an hour and check is have reservation
                 if ((model.StartDate.AddHours(1) <= model.EndDate) && (!isHaveReservation))
                 { 
@@ -81,8 +88,7 @@ namespace HRAgencySystem.Web.Areas.Admin.Controllers
                     }
                 }
 
-                return this.RedirectToRoute("Home/Index");
-                //return this.RedirectToAction("Index", "Home");
+                return this.RedirectToRoute("Home/Index", new {area = ""});
             }
 
             //When we return model we will show the errors
