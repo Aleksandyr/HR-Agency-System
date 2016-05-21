@@ -246,6 +246,7 @@
     <Compile Include="ViewModels\Hall\HallDetailsViewModel.cs" />
     <Compile Include="ViewModels\Hall\HallViewModel.cs" />
     <Compile Include="ViewModels\Item\ItemViewModel.cs" />
+    <Compile Include="ViewModels\Reservation\ReservationDetailsViewModel.cs" />
     <Compile Include="ViewModels\Reservation\ReservationViewModel.cs" />
     <Compile Include="ViewModels\User\UserReservationsViewModel.cs" />
     <Compile Include="ViewModels\User\UserViewModel.cs" />
@@ -331,6 +332,8 @@
     <Content Include="Views\Shared\DisplayTemplates\UserReservationsViewModel.cshtml" />
     <Content Include="Views\Reservation\AllReservations.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\ReservationViewModel.cshtml" />
+    <Content Include="Views\Reservation\Details.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\UserViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HRAgencySystem.Common\HRAgencySystem.Common.csproj">

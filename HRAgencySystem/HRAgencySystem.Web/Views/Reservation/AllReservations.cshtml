@@ -4,7 +4,15 @@
     ViewBag.Title = "AllReservations";
 }
 
-<div id="hall-input" class="pull-left">
+@using (Html.BeginForm("AllReservations", "Reservation", FormMethod.Get, new {@class = "search-form-by-date"}))
+{
+    <label for="start-date">Search by date</label>
+    <input type="date" id="start-date" name="startDate" class="form-control" />
+    <input type="date" id="end-date" name="endDate" class="form-control" />
+    <input type="submit" name="submit" value="Search" class="btn btn-default" />
+}
+
+<div id="reservations-input" class="pull-left">
     <h2>All Reservatins:</h2>
     <div class="row">
         @Html.DisplayFor(x => x)

@@ -10,7 +10,7 @@
     <p>
         @if (this.User.Identity.IsAuthenticated)
         {
-            @Html.ActionLink("Details", "Details", "Hall", new { id = @Model.Id }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Details", "Details", "Reservation", new {id = @Model.Id}, new {@class = "btn btn-primary"})
         }
 
         @if (this.User.IsInRole("Admin"))

@@ -36,3 +36,15 @@ textarea {
 .bs-example{
     margin: 20px;
 }
+
+#start-date{
+    display: inline-block;
+}
+
+#end-date {
+    display: inline-block;
+}
+
+.search-form-by-date {
+    padding-top: 20px;
+}
