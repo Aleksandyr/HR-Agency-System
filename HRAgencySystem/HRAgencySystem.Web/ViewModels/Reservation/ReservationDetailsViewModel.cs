@@ -1,4 +1,6 @@
-﻿namespace HRAgencySystem.Web.ViewModels.Reservation
+﻿using AutoMapper;
+
+namespace HRAgencySystem.Web.ViewModels.Reservation
 {
     using System;
     using System.Collections.Generic;
@@ -20,6 +22,8 @@
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
+
+        public bool isUserInReservation { get; set; }
 
         public IEnumerable<UserViewModel> Users { get; set; }
     }

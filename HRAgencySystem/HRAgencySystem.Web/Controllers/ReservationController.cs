@@ -10,6 +10,7 @@ using HRAgencySystem.Common;
 using HRAgencySystem.Data.DataLayer;
 using HRAgencySystem.Web.ViewModels.Reservation;
 using HRAgencySystem.Web.ViewModels.User;
+using Microsoft.AspNet.Identity;
 using PagedList;
 
 namespace HRAgencySystem.Web.Controllers
@@ -93,17 +94,29 @@ namespace HRAgencySystem.Web.Controllers
                 .Include(r => r.Users)
                 .FirstOrDefault(r => r.Id == id);
 
-            //var reservationDetailsViewModel = new ReservationDetailsViewModel()
-            //{
-            //    Description = reservation.Description,
-            //    HallName = this.Data.Halls.All().Where(h => h.Id == reservation.HallId).Select(r => r.Name).FirstOrDefault(),
-            //    CapacityForReservation = reservation.CapacityForReservation,
-            //    StartDate = reservation.StartDate,
-            //    EndDate = reservation.EndDate,
-            //    Users = (IEnumerable<UserViewModel>) reservation.Users
-            //};
+            List<UserViewModel> users = new List<UserViewModel>();
+            foreach (var user in reservation.Users)
+            {
+                var userViewModel = new UserViewModel()
+                {
+                    Id = user.Id,
+                    UserName = user.UserName
+                };
 
-            var reservationDetailsViewModel = Mapper.Map<ReservationDetailsViewModel>(reservation);
+                users.Add(userViewModel);
+            }
+
+            ReservationDetailsViewModel reservationDetailsViewModel = new ReservationDetailsViewModel
+            {
+                Id = reservation.Id,
+                HallName = this.Data.Halls.All().Where(h => h.Id == reservation.HallId).Select(h => h.Name).FirstOrDefault(),
+                Description = reservation.Description,
+                CapacityForReservation = reservation.CapacityForReservation,
+                isUserInReservation = reservation.Users.FirstOrDefault(u => u.Id == User.Identity.GetUserId()) != null,
+                StartDate = reservation.StartDate,
+                EndDate = reservation.EndDate,
+                Users = users
+            };
 
             return View(reservationDetailsViewModel);
         }

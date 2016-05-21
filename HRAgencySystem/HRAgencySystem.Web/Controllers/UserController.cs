@@ -60,6 +60,34 @@ namespace HRAgencySystem.Web.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Cannot delete the user!");
         }
 
+        [HttpPost]
+        public ActionResult AddMeToTheReservation(int id)
+        {
+            var currUserId = this.User.Identity.GetUserId();
+            var currUser = this.Data.Users
+                .All()
+                .FirstOrDefault(u => u.Id == currUserId);
+
+            var reservation = this.Data.Reservations
+                .All()
+                .FirstOrDefault(r => r.Id == id);
+
+            bool isUserExistInReservation = reservation.Users.FirstOrDefault(r => r.Id == currUserId) != null;
+            if (!isUserExistInReservation && currUser != null)
+            {
+                reservation.Users.Add(currUser);
+                this.Data.Reservations.Update(reservation);
+                this.Data.SaveChanges();
+
+
+                return this.RedirectToAction("Details", "Reservation", new {id = id});
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Cannot add me to this reservation!");
+            }
+        }
+
         private List<UserReservationsViewModel> LoadUserReservation(string userId)
         {
             var userReservations = this.Data.Users

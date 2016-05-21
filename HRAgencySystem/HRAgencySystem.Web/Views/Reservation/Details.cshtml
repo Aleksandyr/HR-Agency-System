@@ -3,7 +3,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Reservatin details</h2>
+<h2>Reservation details</h2>
 
 <div>
     <p>@Html.DisplayNameFor(x => x.Description) : @Html.DisplayFor(x => x.Description)</p>
@@ -23,4 +23,31 @@
         <span>No Users!</span>
     }
 </div>
+
+@if (@Model.isUserInReservation)
+{
+    <p>
+        @using (Ajax.BeginForm("DeleteMeFromReservation", "User", new { id = Model.Id }, new AjaxOptions()
+        {
+            HttpMethod = "POST",
+            OnSuccess = string.Format(
+                            "deleteSuccess({0})",
+                            Json.Encode(Model.Id)
+                            ),
+            LoadingElementId = "progressToadd",
+        }))
+        {
+            @Html.AntiForgeryToken()
+
+            <input type="submit" name="name" class="btn btn-danger" value="Delete me" />
+        }
+    </p>
+}
+else
+{
+    using (Html.BeginForm("AddMeToTheReservation", "User", new { id = @Model.Id }, FormMethod.Post))
+    {
+        <p><button class="btn btn-success">Add me</button></p>
+    }
+}
 

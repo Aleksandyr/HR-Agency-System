@@ -9,6 +9,7 @@
     <td>@Model.CapacityForReservation</td>
     <td>@Model.StartDate</td>
     <td>@Model.EndDate</td>
+    <td>@Html.ActionLink("Details", "Details", "Reservation", new { id = @Model.Id }, new { @class = "btn btn-primary" })</td>
     @if (@Model.isUserInReservation)
     {
         <td>
@@ -40,7 +41,6 @@
     <script>
         var deleteSuccess = function (rowid) {
             document.getElementById('#row ' + rowid).remove();
-            //$('#row' + rowid).remove();
         };
     </script>
 }
