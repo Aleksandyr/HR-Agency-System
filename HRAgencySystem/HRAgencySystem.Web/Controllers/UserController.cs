@@ -76,6 +76,7 @@ namespace HRAgencySystem.Web.Controllers
             if (!isUserExistInReservation && currUser != null)
             {
                 reservation.Users.Add(currUser);
+                reservation.CapacityForReservation = --reservation.CapacityForReservation;
                 this.Data.Reservations.Update(reservation);
                 this.Data.SaveChanges();
 
