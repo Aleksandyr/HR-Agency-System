@@ -83,11 +83,6 @@ namespace HRAgencySystem.Web.Controllers
                 this.Data.SaveChanges();
 
                 var reservationDetailsViewModel = Mapper.Map<ReservationDetailsViewModel>(reservation);
-                var reservationToView = this.Data.Reservations
-                    .All()
-                    .Where(r => r.Id == id)
-                    .ProjectTo<ReservationDetailsViewModel>()
-                    .FirstOrDefault();
 
                 return this.PartialView("PartialReservation", reservationDetailsViewModel);
             }

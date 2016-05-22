@@ -43,6 +43,11 @@ namespace HRAgencySystem.Data.DataLayer
             get { return this.GetRepository<Reservation>(); }
         }
 
+        public IRepository<Office> Offices
+        {
+            get { return this.GetRepository<Office>(); }
+        }
+
 
         public int SaveChanges()
         {

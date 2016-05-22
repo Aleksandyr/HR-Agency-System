@@ -1,0 +1,46 @@
+﻿@model HRAgencySystem.Web.Areas.InputModels.Hall.HallInputModel
+@{
+    ViewBag.Title = "Create Hall";
+}
+
+<h2>Create Hall</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true) // don't show my exception from my properaties
+
+    @Html.LabelFor(x => x.Name, new { @class = "col-md-2 control-label" });
+    @Html.EditorFor(x => x.Name, new { htmlAttributes = new { @class = "form-control", @type = "text" } });
+    @Html.ValidationMessageFor(x => x.Name);
+    <br />
+    @Html.LabelFor(x => x.Description, new { @class = "col-md-2 control-label" });
+    @Html.EditorFor(x => x.Description, new { htmlAttributes = new { @class = "form-control", @type = "textarea" } });
+    @Html.ValidationMessageFor(x => x.Description);
+    <br/>
+    @Html.LabelFor(x => x.Capacity, new { @class = "col-md-2 control-label" });
+    @Html.EditorFor(x => x.Capacity, new { htmlAttributes = new { @class = "form-control", @type = "textarea" } });
+    @Html.ValidationMessageFor(x => x.Capacity);
+    <br />
+    @Html.LabelFor(x => x.OfficeId, new { @class = "col-md-2 control-label" });
+    @Html.DropDownListFor(x => x.OfficeId, (IEnumerable<SelectListItem>)ViewBag.Offices, new { @class = "form-control" });
+    @Html.ValidationMessageFor(x => x.OfficeId);
+    <br/>
+    @Html.LabelFor(x => x.HallStatusId, new { @class = "col-md-2 control-label" });
+    @Html.DropDownListFor(x => x.HallStatusId, (IEnumerable<SelectListItem>)ViewBag.Statuses, new { @class = "form-control" });
+    @Html.ValidationMessageFor(x => x.HallStatusId);
+    <br />
+    @Html.LabelFor(x => x.Items, new { @class = "col-md-2 control-label" })
+    @Html.ListBoxFor(x => Model.ItemIds, (IEnumerable<SelectListItem>)ViewBag.Items, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Items);
+    <br/>
+
+    <input type="submit" name="submit" value="Add Hall" class="btn btn-primary" />
+}
+
+@*Javascript errors for create form*@
+
+@section scripts {
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}

@@ -27,11 +27,6 @@
 
 @if (!@Model.isUserInReservation)
 {
-    @*using (Html.BeginForm("AddMeToTheReservation", "User", new { id = @Model.Id }, FormMethod.Post))
-    {
-        <p><button class="btn btn-success">Add me</button></p>
-    }*@
-
     using (Ajax.BeginForm("AddMeToTheReservation", "User", new { id = Model.Id }, new AjaxOptions()
     {
         HttpMethod = "POST",

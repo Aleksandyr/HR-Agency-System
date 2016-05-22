@@ -226,7 +226,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminHallController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminReservationController.cs" />
+    <Compile Include="Areas\InputModels\Hall\HallInputModel.cs" />
     <Compile Include="Areas\InputModels\Reservation\ReservationInputModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -272,6 +274,7 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Reservation\CreateReservation.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHall\AddHall.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -335,6 +338,7 @@
     <Content Include="Views\Reservation\Details.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\UserViewModel.cshtml" />
     <Content Include="Views\User\PartialReservation.cshtml" />
+    <Content Include="Views\User\PartialReservations.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HRAgencySystem.Common\HRAgencySystem.Common.csproj">

@@ -15,6 +15,8 @@ namespace HRAgencySystem.Data.DataLayer
 
         IRepository<Reservation> Reservations { get; }
 
+        IRepository<Office> Offices { get; }
+
         int SaveChanges();
     }
 }
