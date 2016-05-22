@@ -334,6 +334,7 @@
     <Content Include="Views\Shared\DisplayTemplates\ReservationViewModel.cshtml" />
     <Content Include="Views\Reservation\Details.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\UserViewModel.cshtml" />
+    <Content Include="Views\User\PartialReservation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HRAgencySystem.Common\HRAgencySystem.Common.csproj">

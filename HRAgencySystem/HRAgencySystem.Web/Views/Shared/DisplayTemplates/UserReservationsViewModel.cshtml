@@ -10,30 +10,37 @@
     <td>@Model.StartDate</td>
     <td>@Model.EndDate</td>
     <td>
-        @using (Ajax.BeginForm("DeleteMeFromReservation", "User", new { id = Model.Id }, new AjaxOptions()
+        @using (Ajax.BeginForm(
+            "DeleteMeFromReservation",
+            "User",
+            new
+            {
+                id = @Model.Id,
+            },
+            new AjaxOptions
+            {
+                HttpMethod = "POST",
+                OnSuccess = string.Format(
+                    "deleteSuccess({0})",
+                    Json.Encode(@Model.Id)
+                    ),
+                LoadingElementId = "progressToadd"
+            }
+            ))
         {
-            HttpMethod = "POST",
-            OnSuccess = string.Format(
-                "deleteSuccess({0})",
-                Json.Encode(Model.Id)
-                ),
-            LoadingElementId = "progressToadd",
-        }))
-        {
-            @Html.AntiForgeryToken()
-
-            <input type="submit" name="name" class="btn btn-danger" value="Delete me" />
+            <button type="submit" class="btn btn-danger">Delete me</button>
         }
     </td>
 </tr>
 
 @section scripts {
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
     <script>
         var deleteSuccess = function (rowid) {
-            document.getElementById('#row ' + rowid).remove();
-            //$('#row' + rowid).remove();
+            //document.getElementById("row " + ).remove();
+            $('#row' + rowid).remove();
         };
     </script>
 }

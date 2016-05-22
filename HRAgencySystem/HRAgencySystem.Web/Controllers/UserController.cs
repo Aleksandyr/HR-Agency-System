@@ -1,5 +1,7 @@
 ﻿
 using System.Net;
+using AutoMapper.QueryableExtensions;
+using HRAgencySystem.Web.ViewModels.Reservation;
 
 namespace HRAgencySystem.Web.Controllers
 {
@@ -30,7 +32,6 @@ namespace HRAgencySystem.Web.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteMeFromReservation(int id)
         {
             var currUserId = User.Identity.GetUserId();
@@ -54,7 +55,7 @@ namespace HRAgencySystem.Web.Controllers
 
                 this.Data.SaveChanges();
 
-                return this.View("Reservations", this.LoadUserReservation(currUserId));
+                return this.PartialView("Reservations", this.LoadUserReservation(currUserId));
             }
 
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Cannot delete the user!");
@@ -77,11 +78,18 @@ namespace HRAgencySystem.Web.Controllers
             {
                 reservation.Users.Add(currUser);
                 reservation.CapacityForReservation = --reservation.CapacityForReservation;
+
                 this.Data.Reservations.Update(reservation);
                 this.Data.SaveChanges();
 
+                var reservationDetailsViewModel = Mapper.Map<ReservationDetailsViewModel>(reservation);
+                var reservationToView = this.Data.Reservations
+                    .All()
+                    .Where(r => r.Id == id)
+                    .ProjectTo<ReservationDetailsViewModel>()
+                    .FirstOrDefault();
 
-                return this.RedirectToAction("Details", "Reservation", new {id = id});
+                return this.PartialView("PartialReservation", reservationDetailsViewModel);
             }
             else
             {

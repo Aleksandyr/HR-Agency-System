@@ -49,16 +49,7 @@ namespace HRAgencySystem.Web.Controllers
             List<HallReservationsViewModel> hallReservations= new List<HallReservationsViewModel>();
             foreach (var hallReservation in getHallReservations)
             {
-                HallReservationsViewModel hallReservationVewModel = new HallReservationsViewModel
-                {
-                    Id = hallReservation.Id,
-                    HallName = this.Data.Halls.All().Where(h => h.Id == hallReservation.HallId).Select(h => h.Name).FirstOrDefault(),
-                    Description = hallReservation.Description,
-                    CapacityForReservation = hallReservation.CapacityForReservation,
-                    isUserInReservation = hallReservation.Users.FirstOrDefault(u => u.Id == User.Identity.GetUserId()) != null,
-                    StartDate = hallReservation.StartDate,
-                    EndDate = hallReservation.EndDate   
-                };
+                var hallReservationVewModel = Mapper.Map<HallReservationsViewModel>(hallReservation);
                 hallReservations.Add(hallReservationVewModel);
             }
             return View(hallReservations);

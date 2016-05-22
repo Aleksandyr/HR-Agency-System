@@ -17,8 +17,6 @@
 
         public int CapacityForReservation { get; set; }
 
-        public bool isUserInReservation { get; set; }
-
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }

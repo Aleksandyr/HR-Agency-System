@@ -1,0 +1,21 @@
+﻿@model HRAgencySystem.Web.ViewModels.Reservation.ReservationDetailsViewModel
+
+<div id="reservation-details">
+    <p>@Html.DisplayNameFor(x => x.Description) : @Html.DisplayFor(x => x.Description)</p>
+    <p>@Html.DisplayNameFor(x => x.HallName) : @Html.DisplayFor(x => x.HallName)</p>
+    <p>@Html.DisplayNameFor(x => x.StartDate) : @Html.DisplayFor(x => x.StartDate)</p>
+    <p>@Html.DisplayNameFor(x => x.EndDate) : @Html.DisplayFor(x => x.EndDate)</p>
+    <p id="reservation-capacity">@Html.DisplayNameFor(x => x.CapacityForReservation) : @Html.DisplayFor(x => x.CapacityForReservation)</p>
+
+    <div id="Users">
+        <h2>Users</h2>
+        @if (@Model.Users.Any())
+        {
+            @Html.DisplayFor(x => x.Users)
+        }
+        else
+        {
+            <span>No Users!</span>
+        }
+    </div>
+</div>

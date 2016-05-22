@@ -10,29 +10,6 @@
     <td>@Model.StartDate</td>
     <td>@Model.EndDate</td>
     <td>@Html.ActionLink("Details", "Details", "Reservation", new { id = @Model.Id }, new { @class = "btn btn-primary" })</td>
-    @if (@Model.isUserInReservation)
-    {
-        <td>
-            @using (Ajax.BeginForm("DeleteMeFromReservation", "User", new {id = Model.Id}, new AjaxOptions()
-            {
-                HttpMethod = "POST",
-                OnSuccess = string.Format(
-                    "deleteSuccess({0})",
-                    Json.Encode(Model.Id)
-                    ),
-                LoadingElementId = "progressToadd",
-            }))
-            {
-                @Html.AntiForgeryToken()
-
-                <input type="submit" name="name" class="btn btn-danger" value="Delete me"/>
-            }
-        </td>
-    }
-    else
-    {
-        <td><button class="btn btn-success">Add me</button></td>
-    }
 </tr>
 
 @section scripts {

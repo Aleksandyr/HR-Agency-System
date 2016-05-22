@@ -5,49 +5,53 @@
 
 <h2>Reservation details</h2>
 
-<div>
+<div id="reservation-details">
     <p>@Html.DisplayNameFor(x => x.Description) : @Html.DisplayFor(x => x.Description)</p>
     <p>@Html.DisplayNameFor(x => x.HallName) : @Html.DisplayFor(x => x.HallName)</p>
     <p>@Html.DisplayNameFor(x => x.StartDate) : @Html.DisplayFor(x => x.StartDate)</p>
     <p>@Html.DisplayNameFor(x => x.EndDate) : @Html.DisplayFor(x => x.EndDate)</p>
-    <p>@Html.DisplayNameFor(x => x.CapacityForReservation) : @Html.DisplayFor(x => x.CapacityForReservation)</p>
-</div>
-<div id="Users">
-    <h2>Users</h2>
-    @if (@Model.Users.Any())
-    {
-        @Html.DisplayFor(x => x.Users)
-    }
-    else
-    {
-        <span>No Users!</span>
-    }
-</div>
+    <p id="reservation-capacity">@Html.DisplayNameFor(x => x.CapacityForReservation) : @Html.DisplayFor(x => x.CapacityForReservation)</p>
 
-@if (@Model.isUserInReservation)
-{
-    <p>
-        @using (Ajax.BeginForm("DeleteMeFromReservation", "User", new { id = Model.Id }, new AjaxOptions()
+    <div id="Users">
+        <h2>Users</h2>
+        @if (@Model.Users.Any())
         {
-            HttpMethod = "POST",
-            OnSuccess = string.Format(
-                            "deleteSuccess({0})",
-                            Json.Encode(Model.Id)
-                            ),
-            LoadingElementId = "progressToadd",
-        }))
-        {
-            @Html.AntiForgeryToken()
-
-            <input type="submit" name="name" class="btn btn-danger" value="Delete me" />
+            @Html.DisplayFor(x => x.Users)
         }
-    </p>
-}
-else
+        else
+        {
+            <span>No Users!</span>
+        }
+    </div>
+</div>
+
+@if (!@Model.isUserInReservation)
 {
-    using (Html.BeginForm("AddMeToTheReservation", "User", new { id = @Model.Id }, FormMethod.Post))
+    @*using (Html.BeginForm("AddMeToTheReservation", "User", new { id = @Model.Id }, FormMethod.Post))
     {
         <p><button class="btn btn-success">Add me</button></p>
+    }*@
+
+    using (Ajax.BeginForm("AddMeToTheReservation", "User", new { id = Model.Id }, new AjaxOptions()
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "reservation-details",
+        OnSuccess = "onAddMeSuccess"
+    }))
+    {
+        @Html.AntiForgeryToken()
+
+        <p id="add-me-button"><button class="btn btn-success">Add me</button></p>
     }
 }
 
+@section scripts {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        function onAddMeSuccess() {
+            $("#add-me-button").remove();
+        }
+    </script>
+}
