@@ -1,0 +1,42 @@
+﻿@model HRAgencySystem.Web.Areas.Admin.InputModels.Hall.EditHallInputModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit hall:</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true) // don't show my exception from my properaties
+
+    @Html.LabelFor(x => x.Name, new { @class = "col-md-2 control-label" });
+    @Html.EditorFor(x => x.Name, new { htmlAttributes = new { @class = "form-control", @type = "text", @Value = ViewBag.CurrHall.Name } });
+    @Html.ValidationMessageFor(x => x.Name);
+    <br />
+    @Html.LabelFor(x => x.Description, new { @class = "col-md-2 control-label" });
+    @Html.EditorFor(x => x.Description, new { htmlAttributes = new { @class = "form-control", @type = "textarea", @Value = ViewBag.CurrHall.Description } });
+    @Html.ValidationMessageFor(x => x.Description);
+    <br />
+    @Html.LabelFor(x => x.Capacity, new { @class = "col-md-2 control-label" });
+    @Html.EditorFor(x => x.Capacity, new { htmlAttributes = new { @class = "form-control", @type = "textarea", @Value = ViewBag.CurrHall.Capacity } });
+    @Html.ValidationMessageFor(x => x.Capacity);
+    <br />
+    @Html.LabelFor(x => x.OfficeId, new { @class = "col-md-2 control-label" });
+    @Html.DropDownListFor(x => x.OfficeId, (IEnumerable<SelectListItem>)ViewBag.Offices, new { @class = "form-control", @Value = ViewBag.CurrHall.OfficeName });
+    @Html.ValidationMessageFor(x => x.OfficeId);
+    <br />
+    @Html.LabelFor(x => x.HallStatusId, new { @class = "col-md-2 control-label" });
+    @Html.DropDownListFor(x => x.HallStatusId, (IEnumerable<SelectListItem>)ViewBag.Statuses, new { @class = "form-control", @Value = ViewBag.CurrHall.HallStatusName });
+    @Html.ValidationMessageFor(x => x.HallStatusId);
+    <br />
+
+    <input type="submit" name="submit" value="Edit Hall" class="btn btn-primary" />
+}
+
+@*Javascript errors for create form*@
+
+@section scripts {
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}

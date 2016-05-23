@@ -18,7 +18,7 @@
     [Route("Admin/Hall")]
     public class AdminHallController : BaseController
     {
-        public AdminHallController(IHRAgancyData data) 
+        public AdminHallController(IHRAgancyData data)
             : base(data)
         {
         }
@@ -59,7 +59,7 @@
                 this.Data.SaveChanges();
             }
 
-            return this.RedirectToAction("Index", "Home", new { area = ""});
+            return this.RedirectToAction("Index", "Home", new { area = "" });
         }
 
         [HttpGet]
@@ -116,6 +116,60 @@
             }
 
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Cannot delete this hall!");
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            this.LoadCurrentHall(id);
+            this.LoadOffices();
+            this.LoadStatuses();
+
+            return this.View();
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id, EditHallInputModel model)
+        {
+            if (model != null && this.ModelState.IsValid)
+            {
+                var hall = this.Data.Halls
+                .All()
+                .FirstOrDefault(h => h.Id == id);
+
+                if (hall != null)
+                {
+                    List<Item> items = new List<Item>();
+                    //foreach (var itemId in model.ItemIds)
+                    //{
+                    //    var item = this.Data.Items.All().FirstOrDefault(i => i.Id == itemId);
+
+                    //    items.Add(item);
+                    //}
+
+                    hall.Name = model.Name;
+                    hall.Capacity = model.Capacity;
+                    hall.Description = model.Description;
+                    hall.HallStatusId = model.HallStatusId;
+                    hall.Items = items;
+                    hall.OfficeId = model.OfficeId;
+
+                    this.Data.Halls.Update(hall);
+                    this.Data.SaveChanges();
+                }
+
+                return this.RedirectToAction("Index", "Home", new { area = "" });
+            }
+
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Cannot edit this hall!");
+        }
+
+        private void LoadCurrentHall(int hallId)
+        {
+            ViewBag.CurrHall = this.Data.Halls
+                .All()
+                .ProjectTo<HallDetailsViewModel>()
+                .FirstOrDefault(h => h.Id == hallId);
         }
 
         private void LoadItems()
