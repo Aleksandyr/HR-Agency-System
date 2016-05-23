@@ -1,0 +1,12 @@
+﻿@model HRAgencySystem.Web.ViewModels.Reservation.ReservationViewModel
+@{
+    ViewBag.Title = "ReservationViewModel";
+}
+
+<tr>
+    <td>@Model.HallName</td>
+    <td>@Model.Description</td>
+    <td>@Model.CapacityForReservation</td>
+    <td>@Html.ActionLink("Details", "Details", "Reservation", new {id = @Model.Id, area = ""}, new {@class = "btn btn-primary"})</td>
+</tr>
+

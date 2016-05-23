@@ -49,3 +49,7 @@ textarea {
     padding-top: 20px;
 }
 
+#delete-hall>form {
+    width: 55%;
+    float: left;
+}

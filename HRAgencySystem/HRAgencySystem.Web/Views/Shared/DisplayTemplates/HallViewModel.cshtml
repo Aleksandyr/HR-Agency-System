@@ -13,7 +13,7 @@
         @if (this.User.IsInRole("Admin"))
         {
             <button class="btn btn-success">Edit</button>
-            <button class="btn btn-danger">Delete</button>
+            @Html.ActionLink("Delete", "Delete", "AdminHall", new { id = @Model.Id, area = "Admin" }, new { @class = "btn btn-danger" })
         }
     </p>
 </div>

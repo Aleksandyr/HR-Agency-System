@@ -9,7 +9,7 @@ namespace HRAgencySystem.Web.Areas.Admin.Controllers
     using AutoMapper;
     using HRAgencySystem.Models;
     using HRAgencySystem.Data.DataLayer;
-    using HRAgencySystem.Web.Areas.InputModels.Reservation;
+    using HRAgencySystem.Web.Areas.Admin.InputModels.Reservation;
     using HRAgencySystem.Web.Controllers;
 
     [Authorize(Roles = "Admin")]

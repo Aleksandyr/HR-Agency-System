@@ -1,0 +1,53 @@
+﻿@model HRAgencySystem.Web.Areas.Admin.ViewModels.Hall.DeleteHallViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Hall</h2>
+<div id="delete-hall">
+    @using (Html.BeginForm("DeleteHall", "AdminHall", new {id = @Model.Hall.Id}, FormMethod.Post))
+    {
+        @Html.LabelFor(x => x.Hall.Name, new { @class = "col-md-2 control-label" });
+        @Html.EditorFor(x => x.Hall.Name, new { htmlAttributes = new { @class = "form-control", @type = "text", @readonly = "readonly" } });
+        <br />
+        @Html.LabelFor(x => x.Hall.Description, new { @class = "col-md-2 control-label" });
+        @Html.EditorFor(x => x.Hall.Description, new { htmlAttributes = new { @class = "form-control", @type = "textarea", @readonly = "readonly" } });
+        <br />
+        @Html.LabelFor(x => x.Hall.Capacity, new { @class = "col-md-2 control-label" });
+        @Html.EditorFor(x => x.Hall.Capacity, new { htmlAttributes = new { @class = "form-control", @type = "text", @readonly = "readonly" } });
+        <br />
+        @Html.LabelFor(x => x.Hall.OfficeName, new { @class = "col-md-2 control-label" });
+        @Html.EditorFor(x => x.Hall.OfficeName, new { htmlAttributes = new { @class = "form-control", @type = "text", @readonly = "readonly" } });
+        <br />
+        @Html.LabelFor(x => x.Hall.Items, new { @class = "col-md-2 control-label" });
+        @Html.DropDownListFor(x => x.Hall.Items, (IEnumerable<SelectListItem>)ViewBag.Items, new { @class = "form-control", @readonly = "readonly" });
+        <br />
+
+        <input type="submit" name="submit" value="Delete" class="btn btn-danger" />
+    }
+
+    <div id="hall-reservation-info">
+        <h2>You will delete this reservations:</h2>
+        @if (@Model.Reservations.Any())
+        {
+            <table border="1" id="hall-reservations-table" class="table-hover table-user-reservations">
+                <thead>
+                    <tr>
+                        <th class="hidden-phone">Hall name</th>
+                        <th>Description</th>
+                        <th>Capacity</th>
+                       <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.DisplayFor(x => x.Reservations)
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No reservations!</p>
+        }
+    </div>
+</div>

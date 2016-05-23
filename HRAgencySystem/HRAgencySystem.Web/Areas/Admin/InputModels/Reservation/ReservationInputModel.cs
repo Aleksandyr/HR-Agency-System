@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using HRAgencySystem.Models;
 
-namespace HRAgencySystem.Web.Areas.InputModels.Reservation
+namespace HRAgencySystem.Web.Areas.Admin.InputModels.Reservation
 {
     using System;
     using System.ComponentModel.DataAnnotations;

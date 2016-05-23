@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using HRAgencySystem.Common;
 
-namespace HRAgencySystem.Web.Areas.InputModels.Hall
+namespace HRAgencySystem.Web.Areas.Admin.InputModels.Hall
 {
     public class HallInputModel
     {

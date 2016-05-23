@@ -228,8 +228,9 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminHallController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminReservationController.cs" />
-    <Compile Include="Areas\InputModels\Hall\HallInputModel.cs" />
-    <Compile Include="Areas\InputModels\Reservation\ReservationInputModel.cs" />
+    <Compile Include="Areas\Admin\InputModels\Hall\HallInputModel.cs" />
+    <Compile Include="Areas\Admin\InputModels\Reservation\ReservationInputModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Hall\DeleteHallViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HallController.cs" />
@@ -274,7 +275,9 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Reservation\CreateReservation.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminHall\AddHall.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHall\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHall\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\ReservationViewModel.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -363,6 +366,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\ViewModels\Reservation\" />
     <Folder Include="InputModels\" />
   </ItemGroup>
   <PropertyGroup>

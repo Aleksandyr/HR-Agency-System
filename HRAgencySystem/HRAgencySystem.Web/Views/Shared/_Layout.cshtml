@@ -37,7 +37,7 @@
                     @if (HttpContext.Current.User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Reserv hall", "CreateReservation", "AdminReservation", new {Area = "Admin"}, null)</li>
-                        <li>@Html.ActionLink("Add Hall", "AddHall", "AdminHall", new { area = "Admin" }, null)</li>
+                        <li>@Html.ActionLink("Add Hall", "Add", "AdminHall", new { area = "Admin" }, null)</li>
                     }
                     <li>@Html.ActionLink("All reservations", "AllReservations", "Reservation", new {area = ""}, null)</li>
                 </ul>
