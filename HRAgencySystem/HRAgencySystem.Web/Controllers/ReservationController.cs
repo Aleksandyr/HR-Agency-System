@@ -23,6 +23,7 @@ namespace HRAgencySystem.Web.Controllers
         }
 
         // GET: Reservation
+        [Authorize]
         public ActionResult AllReservations(int? page)
         {
             string startDate = this.Request.QueryString["startDate"];
@@ -87,6 +88,7 @@ namespace HRAgencySystem.Web.Controllers
             return View(getAllReservations);
         }
 
+        [Authorize]
         public ActionResult Details(int id)
         {
             var reservation = this.Data.Reservations

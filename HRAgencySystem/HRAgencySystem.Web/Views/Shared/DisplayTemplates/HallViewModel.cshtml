@@ -12,7 +12,9 @@
 
         @if (this.User.IsInRole("Admin"))
         {
+
             @Html.ActionLink("Edit", "Edit", "AdminHall", new { id = @Model.Id, area = "Admin" }, new { @class = "btn btn-success" })
+            
             @Html.ActionLink("Delete", "Delete", "AdminHall", new { id = @Model.Id, area = "Admin" }, new { @class = "btn btn-danger" })
         }
     </p>

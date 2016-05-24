@@ -139,19 +139,10 @@
 
                 if (hall != null)
                 {
-                    List<Item> items = new List<Item>();
-                    //foreach (var itemId in model.ItemIds)
-                    //{
-                    //    var item = this.Data.Items.All().FirstOrDefault(i => i.Id == itemId);
-
-                    //    items.Add(item);
-                    //}
-
                     hall.Name = model.Name;
                     hall.Capacity = model.Capacity;
                     hall.Description = model.Description;
                     hall.HallStatusId = model.HallStatusId;
-                    hall.Items = items;
                     hall.OfficeId = model.OfficeId;
 
                     this.Data.Halls.Update(hall);
@@ -168,6 +159,7 @@
         {
             ViewBag.CurrHall = this.Data.Halls
                 .All()
+                .Where(h => h.HallStatus.Name == "Active")
                 .ProjectTo<HallDetailsViewModel>()
                 .FirstOrDefault(h => h.Id == hallId);
         }

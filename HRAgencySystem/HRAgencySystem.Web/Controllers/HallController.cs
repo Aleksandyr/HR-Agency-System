@@ -29,6 +29,7 @@ namespace HRAgencySystem.Web.Controllers
             var hall = this.Data.Halls
                 .All()
                 .Include(h => h.Items)
+                .Where(h => h.HallStatus.Name == "Active")
                 .FirstOrDefault(h => h.Id == id);
 
             var hallDetailsViewModel = Mapper.Map<HallDetailsViewModel>(hall);
